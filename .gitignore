@@ -1,30 +1,28 @@
-# Vivado project files and temporary build artifacts
+# Ignore build/generated output
+.cache/
+.hw/
+.hw_emu/
+.sim/
+.runs/
+.gen/
+.ip_user_files/
+.xpr.cache/
+.webtalk/
+.sdk/
+tmp/
+*.cache/
 *.jou
 *.log
 *.str
-*.opt
 *.pb
+*.opt
 *.xml
 *.html
-*.zip
 *.backup.jou
 *.backup.log
+vivado*.backup.tcl
 
-# Vivado-generated project folders
-.sim/
-.cache/
-.hw/
-.hw_test/
-.ip_user_files/
-.ipcache/
-.xpr.cache/
-.webtalk/
-.simvision/
-.sdk/
-.srcs/
-.xgui/
-
-# Simulation generated files
+# Ignore simulation output
 *.wdb
 *.vcd
 *.vpd
@@ -32,34 +30,11 @@
 *.lxt*
 *.asdb
 *.ucdb
-*.elf
-*.hex
-*.bin
-*.mem
 
-# TCL auto-generated during project updates
-vivado*.tcl
-vivado*.backup.tcl
-
-# PlanAhead and Vivado auto-generated folders
-impl_*
-project_*
-gen_run_*
-run_*
-tmp/
-
-# System-generated files
-.DS_Store
+# Ignore temporary or OS files
+*.tmp
+*.bak
+*.swp
+*.DS_Store
 Thumbs.db
 desktop.ini
-
-# Ignore Vivado-specific metadata
-*.data/
-*.runs/
-*.ip_user_files/
-*.srcs/
-*.gen/
-*.sim/
-
-# SDK (if using embedded projects)
-.sdk/
