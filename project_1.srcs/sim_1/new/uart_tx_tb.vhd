@@ -65,7 +65,7 @@ Port map(
             tx_busy => tx_busy       
 );
 
-baud_gen : entity work.baud_generator
+baud_gen_inst : entity work.baud_generator
         generic map(
             clk_freq  => 50_000_000,
             baud_rate => 9_600

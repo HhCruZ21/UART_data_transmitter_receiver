@@ -21,6 +21,7 @@
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
 
 entity uart_rx is
     Generic ( clk_freq : INTEGER := 50_000_000;
@@ -85,6 +86,7 @@ begin
                         else
                             rx_error <= '1';
                         end if;
+                        data_reg <= (others => '0');
                         current_state <= IDLE;
                     end if;
             end case;

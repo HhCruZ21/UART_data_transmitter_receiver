@@ -2,8 +2,9 @@
 2020.2
 May 22 2024
 19:03:11
-D:/Coding/Embedded/VHDL/Projects/project_1/project_1.srcs/sim_1/new/uart_rx_tb.vhd,1754222006,vhdl,,,,uart_rx_tb,,,,,,,,
+D:/Coding/Embedded/VHDL/Projects/project_1/project_1.srcs/sim_1/new/uart_rx_tb.vhd,1754320029,vhdl,,,,uart_rx_tb,,,,,,,,
+D:/Coding/Embedded/VHDL/Projects/project_1/project_1.srcs/sim_1/new/uart_tx_rx_tb.vhd,1754326077,vhdl,,,,uart_tx_rx_tb,,,,,,,,
 D:/Coding/Embedded/VHDL/Projects/project_1/project_1.srcs/sim_1/new/uart_tx_tb.vhd,1754216002,vhdl,,,,uart_tx_tb,,,,,,,,
 D:/Coding/Embedded/VHDL/Projects/project_1/project_1.srcs/sources_1/new/baud_generator.vhd,1754209052,vhdl,D:/Coding/Embedded/VHDL/Projects/project_1/project_1.srcs/sim_1/new/uart_rx_tb.vhd,,,baud_generator,,,,,,,,
-D:/Coding/Embedded/VHDL/Projects/project_1/project_1.srcs/sources_1/new/uart_rx.vhd,1754222284,vhdl,,,,uart_rx,,,,,,,,
+D:/Coding/Embedded/VHDL/Projects/project_1/project_1.srcs/sources_1/new/uart_rx.vhd,1754318230,vhdl,,,,uart_rx,,,,,,,,
 D:/Coding/Embedded/VHDL/Projects/project_1/project_1.srcs/sources_1/new/uart_tx.vhd,1754215279,vhdl,,,,uart_tx,,,,,,,,

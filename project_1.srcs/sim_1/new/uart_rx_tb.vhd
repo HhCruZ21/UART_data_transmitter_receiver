@@ -43,17 +43,6 @@ component uart_rx is
            rx_error : out STD_LOGIC);
 end component uart_rx;
 
---component baud_generator is
---    Generic(
---        clk_freq : integer := 50_000_000;   -- System clock frequency in Hz
---        baud_rate : integer := 9_600        -- Desired baud rate
---    );
---    Port ( clk : in STD_LOGIC;
---           reset : in STD_LOGIC;
---           baud_tick : out STD_LOGIC
---           );
---end component baud_generator;
-
 constant clk_period : time := 20 ns;
 constant baud_period : time := 104.16667 us;
 constant reset_time : time := 100 ns;
@@ -66,7 +55,6 @@ signal rx_valid : std_logic;
 signal rx_error : std_logic;
 
 signal baud_tick : std_logic;
-signal test_data : std_logic_vector(7 downto 0) := "01010101";
 
 begin
 uut : uart_rx
@@ -104,12 +92,13 @@ begin
 end process clk_p;
 
 stim_p : process
+variable test_data : std_logic_vector(7 downto 0) := "01010101";
 procedure send_byte(
         constant data : in std_logic_vector(7 downto 0))
         is
         begin
             rx_serial <= '0';
-            wait for baud_period;
+            wait for baud_period * 1.5;
             
             for i in 0 to 7 loop
                 rx_serial <= data(i);
@@ -117,7 +106,7 @@ procedure send_byte(
             end loop;
             
             rx_serial <= '1';
-            wait for baud_period;
+            wait for baud_period * 1.5;
             
             wait for baud_period;
             end procedure;
@@ -128,8 +117,8 @@ reset <= '0';
 wait for clk_period * 10;
 
 -- Test case 1 : Normal transmission
-report "Starting test case 1 : Normal transmission (0x55)";
-test_data <= "01010101";    -- 0x55
+report "Starting test case 1 : Normal transmission (0x55)"; 
+test_data := "01010101";      -- 0x55
 send_byte(test_data);
 wait until rx_valid = '1' for baud_period * 20;
 assert rx_data = test_data
@@ -139,7 +128,7 @@ assert rx_error = '0'
 
 -- Test case 2 : Complementary pattern
 report "Starting test case 2 : Complementary pattern (0xAA)";
-test_data <= "10101010";    -- 0xAA
+test_data := "10101010";    -- 0xAA
 send_byte(test_data);
 wait until rx_valid = '1' for baud_period * 20;
 assert rx_data = test_data
@@ -147,7 +136,7 @@ assert rx_data = test_data
     
 -- Test case 3 : Framing error test
 report "Starting test case 3 : Framing error test";
-test_data <= "00001111";    -- 0x0F
+test_data := "00001111";    -- 0x0F
 rx_serial <= '0';   -- Start bit
 wait for baud_period;
 for i in 0 to 6 loop
@@ -164,8 +153,7 @@ assert rx_error = '1'
 -- Test case 4 : Continous transmission
 report "Starting test case 4 : Coninous transmission";
 for i in 0 to 15 loop
-    test_data <= std_logic_vector(to_unsigned(i,8));
-    send_byte(test_data);
+    send_byte(std_logic_vector(to_unsigned(i,8)));
     wait until rx_valid = '1' for baud_period * 20;
     assert rx_data = test_data
         report "RX data mismatch in test case 4, byte " & integer'image(i)
